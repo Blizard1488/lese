@@ -4,17 +4,37 @@
   --placeholder: rgba(255,255,255,.25)
 }
 
+html{
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #59c173; 
+  background: -webkit-linear-gradient(to right, #5d26c1, #2063db, #3caea3, #f6d55c, #ed553b); 
+  background: linear-gradient(to right,#5d26c1, #2063db, #3caea3, #f6d55c, #ed553b);
+  background-size: 400% 400%;
+	-webkit-animation: Gradient 10s ease infinite;
+	-moz-animation: Gradient 10s ease infinite;
+	animation: Gradient 10s ease infinite;
+}
+
 body {
-padding: 0;
-margin: 0;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-height: 100vh;
-width: 100vw;
-background: var(--bg);
-font-family: 'Open Sans', sans-serif;
+	height: 98%;
+	width: 98%;
+	border-radius: 1vw;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: var(--bg);
+	font-family: 'Open Sans', sans-serif;
+}
+
+#weather {
+	display: none;
 }
 
 input {

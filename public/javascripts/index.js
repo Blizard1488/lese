@@ -1,5 +1,7 @@
 const search = document.getElementById('searchBar');
-const commands = {
+const weather = document.getElementById('weather').innerHTML;
+
+const short = {
   g: 'google.com',
   y: 'youtube.com',
   f: 'facebook.com',
@@ -20,6 +22,9 @@ const commands = {
   wa: 'www.wolframalpha.com',
   gh: 'github.com'
 };
+const commands = {
+  upper: 'hi',//str => str.toUpperCase(), 
+}
 
 const getCookie = name => {
   const matches = document.cookie.match(new RegExp(
@@ -56,9 +61,21 @@ search.addEventListener('keydown', event => {
   const value = search.value.trim();
   if(event.keyCode === 13) {
     setCookie('lastSearch', value, 36000);
-    window.location = value.startsWith('!') && commands[value.substr(1)]
-      ? 'https://' + commands[value.substr(1)]
-      : 'https://google.com/search?q=' + value
+    if (value.startsWith('!') && short[value.substr(1)]){
+      window.location = 'https://' + short[value.substr(1)];
+    } else if (value.startsWith('upper') ) {
+      search.value = value.substr(value.indexOf(' ')).toUpperCase()
+    } else if (value.startsWith('lower') ) {
+      search.value = value.substr(value.indexOf(' ')).toLowerCase()
+    } else if (value.startsWith('password') ) {
+      search.value = Math.random().toString(36).slice(-8);
+    } else if (value.startsWith('reverse') ) {
+      search.value = [...value.substr(value.indexOf(' '))].reverse().join('')
+    } else if (value.startsWith('chars') ) {
+      search.value = value.length - 6
+    } else if (value.startsWith('weather') ) {
+      search.value = weather
+    } else window.location = 'https://google.com/search?q=' + value;
   }
   if(value === '' && event.keyCode === 32) {
     search.value = search.placeholder
