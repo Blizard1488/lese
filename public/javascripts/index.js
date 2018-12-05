@@ -59,7 +59,7 @@ getCookie('lastSearch')&&(search.placeholder = getCookie('lastSearch'));
 
 search.addEventListener('keydown', event => {
   const value = search.value.trim();
-  if(event.keyCode === 13) {
+  if(value && event.keyCode === 13) {
     setCookie('lastSearch', value, 36000);
     if (value.startsWith('!') && short[value.substr(1)]){
       window.location = 'https://' + short[value.substr(1)];
